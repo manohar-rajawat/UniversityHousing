@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Matrix = (matrix) => (
     <View>
@@ -23,7 +24,15 @@ export default SavedHousing = ({ navigation, route }) => {
             </View>
             <View style={styles.midContainer}>
                 <View style={styles.connectCotnainer}>
-
+                    <TouchableOpacity>
+                        <Ionicons name="heart" size={40} color="tomato" />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Ionicons name="chatbox-ellipses-outline" size={40} color="green" />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <FontAwesome name="phone-square" size={40} color="green" />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.matrixContainer}>
 
@@ -51,17 +60,26 @@ const styles = StyleSheet.create({
     },
     midContainer: {
         flex: 1,
-        borderColor: 'tomato',
-        borderWidth: 1,
     },
     descriptionContainer: {
+        flex: 1,
+    },
+    connectCotnainer: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around'
+    },
+    matrixContainer: {
         flex: 1,
         borderColor: 'tomato',
         borderWidth: 1,
     },
-    connectCotnainer: {},
-    matrixContainer: {},
-    amenitiesContainer: {},
+    amenitiesContainer: {
+        flex: 1,
+        borderColor: 'tomato',
+        borderWidth: 1,
+    },
     image: {
         width: '100%',
         height: '95%',

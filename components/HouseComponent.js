@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
 import FastImage from "react-native-fast-image";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -17,9 +17,9 @@ const House = ({ house }) => (
                     <FontAwesome name="dollar" size={20} color={iconColor} />
                     <Text style={styles.text}>{house.expenses.Rent}</Text>
                     <FontAwesome name="bed" size={20} color={iconColor} />
-                    <Text style={styles.text}>{house.bed} Bed</Text>
+                    <Text style={styles.text}>{house.bed}</Text>
                     <FontAwesome name="bath" size={20} color={iconColor} />
-                    <Text style={styles.text}>{house.bathroom} Bath</Text>
+                    <Text style={styles.text}>{house.bathroom}</Text>
                 </View>
                 <View style={styles.lowRowWrapper}>
                     <Ionicons name="home" size={20} color={iconColor} />
@@ -42,13 +42,17 @@ export default HouseComponent = ({ data, navigation }) => {
         </TouchableOpacity>
     )
     return (
-        <FlatList data={data}
-            renderItem={renderItem} />
+        <SafeAreaView style={styles.container}>
+            <FlatList data={data} renderItem={renderItem} />
+        </SafeAreaView>
     )
 }
 
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
     houseWrapper: {
         flexDirection: 'row',
         height: 150,
@@ -81,9 +85,9 @@ const styles = StyleSheet.create({
         left: 0,
     },
     text: {
-        fontSize: 12,
+        fontSize: 15,
         fontWeight: 'bold',
-        fontFamily: 'FontAwesome',
+        fontFamily: 'Ionicons',
     },
     titleText: {
         textAlign: 'center',
@@ -95,6 +99,6 @@ const styles = StyleSheet.create({
         flexShrink: 1,
         textAlign: "center",
         fontSize: 10,
-        fontWeight: '400',
+        fontFamily: 'Ionicons'
     },
 })

@@ -2,11 +2,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import SavedStack from './screens/SavedStackScreen/SavedStack';
-import SearchStack from './screens/SearchStackScreen/SearchStack';
-import InboxStack from './screens/InboxStackScreen/InboxStack';
-import AccountStack from './screens/AccountStackScreen/AccountStack';
-import AddStack from './screens/AddStackScreen/AddStack';
+import SavedStack from './screens/SavedStackScreen/Index';
+import SearchStack from './screens/SearchStackScreen/Index';
+import InboxStack from './screens/InboxStackScreen/Index';
+import AccountStack from './screens/AccountStackScreen/Index';
+import AddStack from './screens/AddStackScreen/Index';
 
 const Tab = createBottomTabNavigator();
 

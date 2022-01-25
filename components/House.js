@@ -5,6 +5,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 const iconColor = 'green';
+const Row = ({ children }) => (
+    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly' }}>
+        {children}
+    </View>
+)
+const HouseDetail = ({ data }) => data.map((element, index) => (
+    <Row key={index}>
+        <FontAwesome name={element[0]} size={20} color={iconColor} />
+        <Text style={styles.text}>{element[1]}</Text>
+    </Row>
+))
 const House = ({ house }) => (
     <View style={styles.houseWrapper}>
         <View style={styles.imageWrapper}>
@@ -12,14 +23,11 @@ const House = ({ house }) => (
         </View>
         <View style={{ flex: 1.5 }}>
             <View style={styles.houseDetailWrapper}>
-                <Text style={styles.titleText}>{house.type}</Text>
+                <View>
+                    <Text style={styles.titleText}>{house.type}</Text>
+                </View>
                 <View style={styles.midRowWrapper}>
-                    <FontAwesome name="dollar" size={20} color={iconColor} />
-                    <Text style={styles.text}>{house.expenses.Rent}</Text>
-                    <FontAwesome name="bed" size={20} color={iconColor} />
-                    <Text style={styles.text}>{house.bed}</Text>
-                    <FontAwesome name="bath" size={20} color={iconColor} />
-                    <Text style={styles.text}>{house.bathroom}</Text>
+                    <HouseDetail data={[["dollar", house.expenses.Rent], ["bed", house.bed], ["bath", house.bathroom]]} />
                 </View>
                 <View style={styles.lowRowWrapper}>
                     <Ionicons name="home" size={20} color={iconColor} />

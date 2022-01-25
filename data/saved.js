@@ -29,7 +29,7 @@ export const saved = [
             'Indoor Games': true,
             Barbecue: false,
             Jacuzzi: true,
-            Laundry: false,
+            Laundry: true,
         },
         description: "This fully custom, elegant modern ranch-style home is located within walking distance of Ute Valley Park in Mountain Shadows. Designer choices in this stunning home set it apart from every other house in the neighborhood. The main level boasts 10-foot ceilings with exotic Brazilian cherry hardwood flooring throughout, along with six sparkling chandeliers. \n\nThe Kitchen features a stacked- glass backsplash with high - end stainless steel appliances.You\'ll find a large quartz waterfall island in the heart of the home, which acts as a beautiful centerpiece. A stacked-quartz remote-controlled fireplace serves as artwork in the living room, set off by a wall of tall windows for plenty of natural light. The home has ceiling-mounted speakers in nearly every room, along with an amplifier that controls them all."
     },

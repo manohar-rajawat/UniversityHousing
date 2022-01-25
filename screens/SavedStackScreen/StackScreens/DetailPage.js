@@ -38,7 +38,7 @@ export default SavedHousing = ({ navigation, route }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style={{ flex: 1, }}>
+            <View style={{ flex: 1.5, }}>
                 <SafeAreaView style={{ flex: 1, }}>
                     <ScrollView style={styles.scrollView}>
                         <Expense expense={house.expenses} />

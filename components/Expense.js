@@ -3,23 +3,25 @@ import { View, Text, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+const iconColor = "#4169e1";
+const iconSize = 30;
+const IconType = ({ name }) => {
+    if (name === 'receipt')
+        return <Ionicons name={name} size={iconSize} color={iconColor} />
+    return <FontAwesome name={name} size={iconSize} color={iconColor} />
+}
+const ExpenseList = ({ data }) => data.map((element, index) => (
+    <View key={index} style={styles.rentContainer}>
+        <IconType name={element[0]} />
+        <Text style={styles.text}>{element[1]}</Text>
+    </View>
+))
 export default Expenses = ({ expense }) => {
-    const iconColor = "#4169e1";
-    const iconSize = 30
     return (
         <View style={styles.expenseContainer}>
-            <View style={styles.rentContainer}>
-                <FontAwesome name="dollar" size={iconSize} color={iconColor} />
-                <Text style={styles.text}>{expense.Rent}</Text>
-            </View>
-            <View style={styles.wifiContainer}>
-                <FontAwesome name="wifi" size={iconSize} color={iconColor} />
-                <Text style={styles.text}>{expense.Wifi}</Text>
-            </View>
-            <View style={styles.utilityContainer}>
-                <Ionicons name="receipt" size={iconSize} color={iconColor} />
-                <Text style={styles.text}>{expense.Utility}</Text>
-            </View>
+            {
+                <ExpenseList data={[["dollar", expense.Rent], ["wifi", expense.Wifi], ["receipt", expense.Utility]]} />
+            }
         </View>
     )
 }

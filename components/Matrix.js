@@ -1,7 +1,7 @@
-import { validatePathConfig } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { MatrixList } from '../src/configuration/MatrixList';
 
 const iconSize = 20;
 const Row = ({ children }) => (
@@ -11,7 +11,7 @@ const Row = ({ children }) => (
 )
 
 export default Matrix = ({ matrix }) => {
-    const matrixList = ['Man', 'Woman', 'Smoking', 'Drinking', 'Room', 'Living Room', 'Non Veg'].map((element, index) => {
+    const matrixList = MatrixList.map((element, index) => {
         const currentElement = matrix[element];
         if (typeof (currentElement) == 'object')
             return null;

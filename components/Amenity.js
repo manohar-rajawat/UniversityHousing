@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { AmenityList } from '../src/configuration/AmenityList';
 
 const iconColor = "green";
 const iconColorCross = 'tomato';
@@ -12,7 +13,7 @@ const Row = ({ children }) => (
 )
 
 export default Amenity = ({ amenity }) => {
-    const amenityList = ['Gym', 'Swimming', 'Parking', 'Wifi', 'Sports Ground', 'Indoor Games', 'Barbecue', 'Jacuzzi', 'Laundry'].map((element, index) => {
+    const amenityList = AmenityList.map((element, index) => {
         const currentElement = amenity[element];
         if (typeof (currentElement) == 'object')
             return null;

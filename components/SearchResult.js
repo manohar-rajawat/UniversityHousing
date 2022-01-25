@@ -29,7 +29,7 @@ export default SearchResult = ({ navigation, predictNameList, clearSearchBox }) 
             {
                 item.logo ? <Logo logo={item.logo} /> : <Alpha />
             }
-            <Text style={{ fontSize: 12, fontWeight: '500' }}>{item.name}</Text>
+            <Text style={{ fontSize: 12, fontWeight: '500', flexShrink: 1, }}>{item.name}</Text>
         </TouchableOpacity>
     )
     return (

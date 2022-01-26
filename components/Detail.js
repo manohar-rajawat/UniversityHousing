@@ -6,21 +6,24 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 const iconColor = "#4169e1";
 const iconSize = 30;
 const IconType = ({ name }) => {
-    if (name === 'receipt')
+    if (['receipt', 'people'].includes(name))
         return <Ionicons name={name} size={iconSize} color={iconColor} />
     return <FontAwesome name={name} size={iconSize} color={iconColor} />
 }
-const ExpenseList = ({ data }) => data.map((element, index) => (
-    <View key={index} style={styles.rentContainer}>
-        <IconType name={element[0]} />
-        <Text style={styles.text}>{element[1]}</Text>
-    </View>
-))
-export default Expenses = ({ expense }) => {
+const ExpenseList = ({ data }) => data.map((element, index) => {
+    if (!element.includes(undefined))
+        return (
+            <View key={index} style={styles.rentContainer}>
+                <IconType name={element[0]} />
+                <Text style={styles.text}>{element[1]}</Text>
+            </View>
+        )
+})
+export default Expenses = (props) => {
     return (
         <View style={styles.expenseContainer}>
             {
-                <ExpenseList data={[["dollar", expense.Rent], ["wifi", expense.Wifi], ["receipt", expense.Utility]]} />
+                <ExpenseList data={Object.values(props)} />
             }
         </View>
     )

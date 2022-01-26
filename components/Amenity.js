@@ -36,8 +36,8 @@ export default Amenity = ({ amenity }) => {
     return (
         <View style={styles.amanityContainer}>
             <Row>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'green', paddingVertical: 5, borderRadius: 20, }}>
-                    <Text style={{ fontSize: 20, fontStyle: "italic", fontWeight: 'bold', color: 'white', letterSpacing: 1, }}>Amenities</Text>
+                <View style={styles.header}>
+                    <Text style={styles.headerText}>Amenities</Text>
                 </View>
             </Row>
             {
@@ -56,6 +56,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 5,
         marginVertical: 5,
+    },
+    header: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#4169e1',
+        paddingVertical: 5,
+        borderRadius: 20,
+    },
+    headerText: {
+        fontSize: 20,
+        fontStyle: "italic",
+        fontWeight: 'bold',
+        color: 'white',
+        letterSpacing: 1,
     },
     textContainer: {
         flex: 2,

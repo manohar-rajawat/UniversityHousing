@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Expense from '../../../components/Expense';
+import Detail from '../../../components/Detail';
 import Matrix from '../../../components/Matrix';
 import Amenity from '../../../components/Amenity';
 
@@ -41,15 +41,19 @@ export default SavedHousing = ({ navigation, route }) => {
             <View style={{ flex: 1.5, }}>
                 <SafeAreaView style={{ flex: 1, }}>
                     <ScrollView style={styles.scrollView}>
-                        <Expense expense={house.expenses} />
+                        <Detail bed={["bed", house.bed]} />
+                        <Detail rent={["dollar", house.expenses.Rent]} wifi={["wifi", house.expenses.Wifi]} utility={["receipt", house.expenses.Utility]} />
                         <Column>
                             <Matrix matrix={house.matrix} />
                             <View style={{ borderColor: '#666', borderWidth: 0.5, borderRadius: 20, }}></View>
                             <Amenity amenity={house.amenities} />
                         </Column>
-                        <Description>
-                            <Text style={styles.textDescription}>{house.description}</Text>
-                        </Description>
+                        {
+                            (house.description && house.description.length) > 0 &&
+                            <Description>
+                                <Text style={styles.textDescription}>{house.description}</Text>
+                            </Description>
+                        }
                     </ScrollView>
                 </SafeAreaView>
             </View>

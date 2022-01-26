@@ -4,7 +4,7 @@ import FastImage from "react-native-fast-image";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-const iconColor = 'green';
+const iconColor = '#4169e1';
 const Row = ({ children }) => (
     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly' }}>
         {children}

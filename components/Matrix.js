@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { MatrixList } from '../src/configuration/MatrixList';
@@ -10,7 +10,7 @@ const Row = ({ children }) => (
     </View>
 )
 
-export default Matrix = ({ matrix }) => {
+const Matrix = ({ matrix }) => {
     const matrixList = MatrixList.map((element, index) => {
         const currentElement = matrix[element];
         if (typeof (currentElement) == 'object')
@@ -73,3 +73,5 @@ const styles = StyleSheet.create({
         fontFamily: 'FontAwesome',
     },
 })
+
+export default memo(Matrix);

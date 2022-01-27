@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { AmenityList } from '../src/configuration/AmenityList';
@@ -12,7 +12,7 @@ const Row = ({ children }) => (
     </View>
 )
 
-export default Amenity = ({ amenity }) => {
+const Amenity = ({ amenity }) => {
     const amenityList = AmenityList.map((element, index) => {
         const currentElement = amenity[element];
         if (typeof (currentElement) == 'object')
@@ -87,3 +87,5 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     }
 })
+
+export default memo(Amenity);

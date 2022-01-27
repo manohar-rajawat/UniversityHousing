@@ -1,25 +1,59 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
+import React, { memo } from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, ScrollView, SectionList } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Detail from '../../../components/Detail';
 import Matrix from '../../../components/Matrix';
 import Amenity from '../../../components/Amenity';
 
-const Column = ({ children }) => (
+const Column = memo(({ children }) => (
     <View style={styles.columnContainer}>
         {children}
     </View>
-)
+))
 
-const Description = ({ children }) => (
+const Description = memo(({ children }) => (
     <View style={styles.descriptionContainer}>
         {children}
     </View>
-)
+))
 
 export default SavedHousing = ({ navigation, route }) => {
     const { house } = route.params;
+    const DATA = [
+        {
+            title: "detail",
+            data: [
+                { view: <Detail bed={["bed", house.bed]} /> },
+                { view: < Detail rent={["dollar", house.expenses.Rent]} wifi={["wifi", house.expenses.Wifi]} utility={["receipt", house.expenses.Utility]} /> }
+            ],
+        },
+        {
+            title: "column",
+            data: [
+                {
+                    view:
+                        <Column>
+                            <Matrix matrix={house.matrix} />
+                            <View style={{ borderColor: '#666', borderWidth: 0.5, borderRadius: 20, }}></View>
+                            <Amenity amenity={house.amenities} />
+                        </Column>
+                }
+            ]
+        },
+        {
+            title: "description",
+            data: [
+                {
+                    view: (house.description && house.description.length) > 0 &&
+                        <Description>
+                            <Text style={styles.textDescription}>{house.description}</Text>
+                        </Description>
+                }
+            ]
+
+        },
+    ];
     return (
         <View style={styles.container}>
             <View style={{ flex: 1, }}>
@@ -40,21 +74,10 @@ export default SavedHousing = ({ navigation, route }) => {
             </View>
             <View style={{ flex: 1.5, }}>
                 <SafeAreaView style={{ flex: 1, }}>
-                    <ScrollView style={styles.scrollView}>
-                        <Detail bed={["bed", house.bed]} />
-                        <Detail rent={["dollar", house.expenses.Rent]} wifi={["wifi", house.expenses.Wifi]} utility={["receipt", house.expenses.Utility]} />
-                        <Column>
-                            <Matrix matrix={house.matrix} />
-                            <View style={{ borderColor: '#666', borderWidth: 0.5, borderRadius: 20, }}></View>
-                            <Amenity amenity={house.amenities} />
-                        </Column>
-                        {
-                            (house.description && house.description.length) > 0 &&
-                            <Description>
-                                <Text style={styles.textDescription}>{house.description}</Text>
-                            </Description>
-                        }
-                    </ScrollView>
+                    <SectionList
+                        sections={DATA}
+                        renderItem={({ item }) => item.view}
+                        keyExtractor={(item, index) => item + index} />
                 </SafeAreaView>
             </View>
         </View>

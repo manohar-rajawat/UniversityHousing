@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -19,7 +19,7 @@ const ExpenseList = ({ data }) => data.map((element, index) => {
             </View>
         )
 })
-export default Expenses = (props) => {
+const Expenses = (props) => {
     return (
         <View style={styles.expenseContainer}>
             {
@@ -61,3 +61,5 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
 })
+
+export default memo(Expenses);

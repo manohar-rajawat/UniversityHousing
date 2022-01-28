@@ -5,6 +5,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Detail from '../../../components/Detail';
 import Matrix from '../../../components/Matrix';
 import Amenity from '../../../components/Amenity';
+import Address from '../../../components/Address';
 
 const Column = memo(({ children }) => (
     <View style={styles.columnContainer}>
@@ -39,7 +40,7 @@ export default SavedHousing = ({ navigation, route }) => {
                             <Amenity amenity={house.amenities} />
                         </Column>
                 }
-            ]
+            ],
         },
         {
             title: "description",
@@ -50,8 +51,16 @@ export default SavedHousing = ({ navigation, route }) => {
                             <Text style={styles.textDescription}>{house.description}</Text>
                         </Description>
                 }
-            ]
+            ],
 
+        },
+        {
+            title: "address",
+            data: [
+                {
+                    view: <Address address={house.address} />,
+                },
+            ],
         },
     ];
     return (
@@ -124,7 +133,8 @@ const styles = StyleSheet.create({
         minHeight: 100,
     },
     textDescription: {
-        fontSize: 15,
+        fontSize: 14,
         textAlign: 'justify',
+        fontFamily: 'Ionicons',
     },
 })

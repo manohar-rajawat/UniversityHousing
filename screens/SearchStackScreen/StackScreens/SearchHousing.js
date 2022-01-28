@@ -81,7 +81,7 @@ export default SearchHousing = ({ navigation }) => {
                 <View style={styles.resultWrapper}>
                     {
                         predictNameList.length > 0 &&
-                        <SearchResult navigation={navigation} clearSearchBox={clearSearchBox} predictNameList={predictNameList} />
+                        <SearchResult clearSearchBox={clearSearchBox} predictNameList={predictNameList} />
                     }
                 </View>
             </View>

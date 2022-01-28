@@ -7,9 +7,9 @@ export const saved = [
         bathroom: 1,
         people: 2,
         expenses: {
-            Rent: 2600,
-            Wifi: 50,
-            Utility: 40,
+            Rent: 515,
+            Wifi: 20,
+            Utility: 20,
         },
         matrix: {
             Man: true,

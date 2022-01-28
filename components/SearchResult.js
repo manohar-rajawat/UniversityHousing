@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, Keyboard, Image, ScrollView } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import { useNavigation } from '@react-navigation/native';
 
 const Logo = ({ logo }) => {
     return (
@@ -16,7 +17,8 @@ const Alpha = () => (
     </View>
 )
 
-export default SearchResult = ({ navigation, predictNameList, clearSearchBox }) => {
+export default SearchResult = ({ predictNameList, clearSearchBox }) => {
+    const navigation = useNavigation();
     const clickUniversity = (item) => {
         Keyboard.dismiss();
         clearSearchBox();

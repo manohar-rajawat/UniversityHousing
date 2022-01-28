@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchHousing from './StackScreens/SearchHousing';
 import ResultSearch from './StackScreens/ResultSearch';
 
-export default SearchStack => {
+export default SearchStack = ({ navigation, route }) => {
     const Stack = createNativeStackNavigator();
     return (
         <Stack.Navigator screenOptions={{

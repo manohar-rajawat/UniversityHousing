@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
-import FastImage from "react-native-fast-image";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import { useNavigation } from "@react-navigation/native";
 
 const iconColor = '#4169e1';
 const Row = ({ children }) => (
@@ -41,7 +41,8 @@ const House = ({ house }) => (
     </View>
 )
 
-export default HouseComponent = ({ data, navigation }) => {
+export default HouseComponent = ({ data }) => {
+    const navigation = useNavigation();
     const renderItem = ({ item }) => (
         <TouchableOpacity onPress={() => navigation.navigate('DetailPage', {
             house: item

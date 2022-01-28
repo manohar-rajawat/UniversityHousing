@@ -3,10 +3,10 @@ import { View, Text, StyleSheet } from 'react-native';
 import HouseComponent from '../../../components/House';
 import { saved } from '../../../data/saved';
 
-export default SavedHousing = ({ navigation }) => {
+export default SavedHousing => {
     return (
         <View style={styles.container}>
-            <HouseComponent navigation={navigation} data={saved} />
+            <HouseComponent data={saved} />
         </View>
     );
 }

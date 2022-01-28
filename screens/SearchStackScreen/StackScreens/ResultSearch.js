@@ -1,8 +1,10 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet, TextInput, Dimensions, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Button } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import { useNavigation } from '@react-navigation/native';
 
-const SelectedView = ({ navigation, item }) => {
+const SelectedView = ({ item }) => {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
@@ -13,7 +15,7 @@ const SelectedView = ({ navigation, item }) => {
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.buttonStyle}>
                     <Text style={styles.textStyle}>Back</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log(item.name)} style={[styles.buttonStyle, { backgroundColor: 'tomato' }]}>
+                <TouchableOpacity onPress={() => navigation.navigate('SavedStack', { screen: 'SavedStack' })} style={[styles.buttonStyle, { backgroundColor: 'tomato' }]}>
                     <Text style={styles.textStyle}>Next</Text>
                 </TouchableOpacity>
             </View>
@@ -21,9 +23,9 @@ const SelectedView = ({ navigation, item }) => {
     )
 }
 
-export default ResultSearch = ({ navigation, route }) => {
+export default ResultSearch = ({ route }) => {
     return (
-        <SelectedView navigation={navigation} item={route.params.item} />
+        <SelectedView item={route.params.item} />
     )
 }
 

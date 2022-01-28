@@ -6,6 +6,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 const iconColor = "#4169e1";
 const iconSize = 30;
 const IconType = ({ name }) => {
+    if (!name)
+        return null
     if (['receipt', 'people'].includes(name))
         return <Ionicons name={name} size={iconSize} color={iconColor} />
     return <FontAwesome name={name} size={iconSize} color={iconColor} />

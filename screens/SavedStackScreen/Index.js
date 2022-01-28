@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SavedHousing from './StackScreens/SavedHousing';
 import DetailPage from './StackScreens/DetailPage';
 
-export default SavedStack = ({ navigation, route }) => {
+export default SavedStack => {
     const Stack = createNativeStackNavigator();
     return (
         <Stack.Navigator screenOptions={{

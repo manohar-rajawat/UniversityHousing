@@ -15,7 +15,7 @@ const SelectedView = ({ item }) => {
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.buttonStyle}>
                     <Text style={styles.textStyle}>Back</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('SavedStack', { screen: 'SavedStack' })} style={[styles.buttonStyle, { backgroundColor: 'tomato' }]}>
+                <TouchableOpacity onPress={() => navigation.navigate('SavedStack', { screen: 'Saved' })} style={[styles.buttonStyle, { backgroundColor: 'tomato' }]}>
                     <Text style={styles.textStyle}>Next</Text>
                 </TouchableOpacity>
             </View>

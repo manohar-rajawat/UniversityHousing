@@ -1,7 +1,7 @@
 export const names =
     [
         {
-            name: "California State University, Bakersfield",
+            name: "California State University Bakersfield",
             logo: require("../src/assets/universitieslogo/Bakersfield.png")
         },
         {

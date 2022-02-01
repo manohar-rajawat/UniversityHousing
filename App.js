@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName='SavedStack' screenOptions={({ route }) => ({
+      <Tab.Navigator initialRouteName='SearchStack' screenOptions={({ route }) => ({
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'grey',
         tabBarStyle: {

@@ -8,7 +8,9 @@ const SelectedView = ({ item }) => {
     return (
         <View style={styles.container}>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
-                <FastImage style={{ width: 100, height: 100, }} source={item.logo} />
+                <FastImage style={{ width: 100, height: 100, }} source={{
+                    uri: item.logo
+                }} />
                 <Text style={styles.nameUniversity}>{item.name}</Text>
             </View>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', }}>

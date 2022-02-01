@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TextInput, Dimensions, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Button } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { names } from '../../../data/names'
 import SearchResult from '../../../components/SearchResult';
+import { AllUniversityList, UniversityByName } from '../../../src/api/API';
 const width = Dimensions.get("screen").width
 
 const DismissKeyboard = ({ children }) => (
@@ -10,6 +10,7 @@ const DismissKeyboard = ({ children }) => (
         {children}
     </TouchableWithoutFeedback>
 )
+
 
 const IconChange = ({ name, clearSearchBox }) => {
     if (name.length) {
@@ -41,6 +42,46 @@ const CancelButton = ({ iscancellable, clearSearchBox }) => {
     return null;
 }
 
+const LoadUniversities = async (name, setPredictNameList) => {
+    try {
+        const response = await fetch(UniversityByName + name);
+        if (response.status != 200)
+            return
+        const json = await response.json()
+        if (json.Data) {
+            const universities = [];
+            json.Data.forEach(({ name, url }) => {
+                const university = {
+                    "name": name,
+                    "logo": url
+                }
+                universities.push(university)
+            })
+            setPredictNameList(universities);
+        } else {
+            setPredictNameList([]);
+            return
+        }
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+const searchUniversity = (name, setUniversityName, setPredictNameList, setIsClicked) => {
+    setUniversityName(name);
+    if (name.length) {
+        (
+            async () => {
+                LoadUniversities(name, setPredictNameList)
+            }
+        )();
+        setIsClicked(true);
+    } else {
+        setIsClicked(false);
+        setPredictNameList([]);
+    }
+}
+
 export default SearchHousing = ({ navigation }) => {
     const [universityName, setUniversityName] = useState("");
     const [predictNameList, setPredictNameList] = useState([]);
@@ -50,28 +91,12 @@ export default SearchHousing = ({ navigation }) => {
         setPredictNameList([]);
         setIsClicked(false);
     }
-    const searchUniversity = (name) => {
-        let universities = [];
-        setUniversityName(name);
-        if (name.length) {
-            setIsClicked(true);
-            for (let i = 0; i < names.length; i++) {
-                if (names[i].name.toLowerCase().includes(name.toLowerCase())) {
-                    universities.push(names[i]);
-                }
-            }
-            setPredictNameList(universities);
-        } else {
-            setIsClicked(false);
-            setPredictNameList([]);
-        }
-    }
     return (
         <DismissKeyboard>
             <View style={styles.container}>
                 <View style={styles.lookupWrapper}>
                     <View style={styles.textInputWrapper}>
-                        <TextInput onChangeText={text => searchUniversity(text)} value={universityName} style={styles.textInput} placeholder='Search University' placeholderTextColor='tomato' />
+                        <TextInput onChangeText={text => searchUniversity(text, setUniversityName, setPredictNameList, setIsClicked)} value={universityName} style={styles.textInput} placeholder='Search University' placeholderTextColor='tomato' />
                         <IconChange name={universityName} clearSearchBox={clearSearchBox} />
                     </View>
                     <View>
@@ -80,7 +105,7 @@ export default SearchHousing = ({ navigation }) => {
                 </View>
                 <View style={styles.resultWrapper}>
                     {
-                        predictNameList.length > 0 &&
+                        predictNameList.length > 0 && universityName.length > 0 &&
                         <SearchResult clearSearchBox={clearSearchBox} predictNameList={predictNameList} />
                     }
                 </View>

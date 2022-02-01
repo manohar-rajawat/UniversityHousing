@@ -6,14 +6,16 @@ import { useNavigation } from '@react-navigation/native';
 const Logo = ({ logo }) => {
     return (
         <View style={styles.preImageWrapper}>
-            <FastImage style={{ width: 50, height: 50, }} source={logo} />
+            <FastImage style={{ width: 50, height: 50, }} source={{
+                uri: logo
+            }} />
         </View>
     )
 }
 
 const Alpha = () => (
-    <View style={styles.preTextWrapper}>
-        <Text style={styles.preText}>CA</Text>
+    <View style={styles.preImageWrapper}>
+        <FastImage style={{ width: 50, height: 50, }} source={require('../src/assets/universitieslogo/default.png')} />
     </View>
 )
 
@@ -46,17 +48,6 @@ const styles = StyleSheet.create({
         borderBottomColor: '#666',
         borderBottomWidth: 0.5,
         alignItems: 'center',
-    },
-    preTextWrapper: {
-        marginHorizontal: 10,
-        backgroundColor: 'tomato',
-        height: 40,
-        width: 40,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 40,
-        borderColor: '#666',
-        borderWidth: 2,
     },
     preImageWrapper: {
         marginHorizontal: 10,
